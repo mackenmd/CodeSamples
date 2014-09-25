@@ -10,14 +10,23 @@ namespace ReverseWords
     {
         static void Main(string[] args)
         {
-            ReverseTheWordsOption1();
-            ReverseTheWordsOption2();
+            string originalWords;
+
+            if (args.Any()) {
+                originalWords = String.Join(" ", args);
+            }
+            else {
+                originalWords = "The dog walks down the street";
+
+            }
+
+            ReverseTheWordsOption1(originalWords);
+            ReverseTheWordsOption2(originalWords);
         }
 
-        private static void ReverseTheWordsOption1()
+        private static void ReverseTheWordsOption1(string originalWords)
         {
             char[] delimiterChars = { ' ', '\t' };
-            const string originalWords = "The dog walks down the street";
 
             var words = originalWords.Split(delimiterChars);
             var reversedWords = new StringBuilder();
@@ -39,10 +48,9 @@ namespace ReverseWords
         }
 
 
-        private static void ReverseTheWordsOption2()
+        private static void ReverseTheWordsOption2(string originalWords)
         {
             char[] delimiterChars = { ' ', '\t' };
-            const string originalWords = "The dog walks down the street";
 
             var reversedWords = String.Join(" ", originalWords.Split(delimiterChars).Reverse());
 
