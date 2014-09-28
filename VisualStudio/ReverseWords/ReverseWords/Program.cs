@@ -1,35 +1,26 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 
 namespace ReverseWords
 {
     class Program
     {
+        static readonly char[] DelimiterChars = { ' ', '\t' };
+
         static void Main(string[] args)
         {
-            string originalWords;
+            var originalSentence = args.Any() ? String.Join(" ", args) : "The dog walks down the street";
 
-            if (args.Any()) {
-                originalWords = String.Join(" ", args);
-            }
-            else {
-                originalWords = "The dog walks down the street";
-
-            }
-
-            ReverseTheWordsOption1(originalWords);
-            ReverseTheWordsOption2(originalWords);
-            ReverseTheWordsOption3(originalWords);
+            ReverseTheWordsOption1(originalSentence);
+            ReverseTheWordsOption2(originalSentence);
+            ReverseTheWordsOption3(originalSentence);
         }
 
-        private static void ReverseTheWordsOption1(string originalWords)
+        private static void ReverseTheWordsOption1(string originalSentence)
         {
-            char[] delimiterChars = { ' ', '\t' };
 
-            var words = originalWords.Split(delimiterChars);
+            var words = originalSentence.Split(DelimiterChars);
             var reversedWords = new StringBuilder();
 
             for (int x = words.Count() - 1; x >= 0; x--)
@@ -44,41 +35,43 @@ namespace ReverseWords
 
             Console.WriteLine("Method 1:\n\n");
 
-            Console.WriteLine("Original text: '{0}'", originalWords);
+            Console.WriteLine("Original text: '{0}'", originalSentence);
             Console.WriteLine("Reversed text: '{0}'\n\n", reversedWords);
         }
 
 
         private static void ReverseTheWordsOption2(string originalWords)
         {
-            char[] delimiterChars = { ' ', '\t' };
-
-            var reversedWords = String.Join(" ", originalWords.Split(delimiterChars).Reverse());
+            var reversedWords = String.Join(" ", originalWords.Split(DelimiterChars).Reverse());
 
             Console.WriteLine("Method 2:\n\n");
 
-            System.Console.WriteLine("Original text: '{0}'", originalWords);
-            System.Console.WriteLine("Reversed text: '{0}'\n\n", reversedWords);
+            Console.WriteLine("Original text: '{0}'", originalWords);
+            Console.WriteLine("Reversed text: '{0}'\n\n", reversedWords);
         }
 
         private static void ReverseTheWordsOption3(string originalWords)
         {
-            char[] delimiterChars = { ' ', '\t' };
-
-            var strings = originalWords.Split(delimiterChars);
+            var listOfOrginalWords = originalWords.Split(DelimiterChars);
             var reversedWords = new StringBuilder();
 
-            foreach (var s in strings) {
-                for (var i = s.Length - 1; i >= 0; i--) {
-                    reversedWords.Append(s[i]);
+            for (var wordCount = 0; wordCount < listOfOrginalWords.Count(); wordCount++) {
+                var currentWord = listOfOrginalWords[wordCount];
+
+                for (var letterCount = currentWord.Length - 1; letterCount >= 0; letterCount--)
+                {
+                    reversedWords.Append(currentWord[letterCount]);
                 }
-                reversedWords.Append(" ");
+
+                if (wordCount < listOfOrginalWords.Count() - 1) {
+                    reversedWords.Append(" ");
+                }
             }
 
             Console.WriteLine("Method 3:\n\n");
 
-            System.Console.WriteLine("Original text: '{0}'", originalWords);
-            System.Console.WriteLine("Reversed text: '{0}'\n\n", reversedWords.ToString().Trim());
+            Console.WriteLine("Original text: '{0}'", originalWords);
+            Console.WriteLine("Reversed text: '{0}'\n\n", reversedWords);
         }
     }
 }
