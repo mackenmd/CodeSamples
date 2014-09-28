@@ -15,7 +15,9 @@ namespace ReverseWords
             ReverseTheWordsOption1(originalSentence);
             ReverseTheWordsOption2(originalSentence);
             ReverseTheWordsOption3(originalSentence);
+            ReverseTheWordsOption4(originalSentence);
         }
+
 
         private static void ReverseTheWordsOption1(string originalSentence)
         {
@@ -72,6 +74,27 @@ namespace ReverseWords
 
             Console.WriteLine("Original text: '{0}'", originalWords);
             Console.WriteLine("Reversed text: '{0}'\n\n", reversedWords);
+        }
+
+
+        private static void ReverseTheWordsOption4(string originalWords)
+        {
+            var listOfOrginalWords = originalWords.Split(DelimiterChars);
+            var reversedWords = new StringBuilder();
+
+            foreach (var currentWord in listOfOrginalWords)
+            {
+                for (var letterCount = currentWord.Length - 1; letterCount >= 0; letterCount--)
+                {
+                    reversedWords.Append(currentWord[letterCount]);
+                }
+                reversedWords.Append(" ");
+            }
+
+            Console.WriteLine("Method 4:\n\n");
+
+            System.Console.WriteLine("Original text: '{0}'", originalWords);
+            System.Console.WriteLine("Reversed text: '{0}'\n\n", reversedWords.ToString().Trim());
         }
     }
 }
