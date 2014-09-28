@@ -1,0 +1,44 @@
+diff --git "a/C:\\Users\\Mark\\AppData\\Local\\Temp\\TortoiseGit\\ProF756.tmp\\Program-1460492-left.cs" "b/C:\\Users\\Mark\\AppData\\Local\\Temp\\TortoiseGit\\ProF755.tmp\\Program-2191c02-right.cs"
+index d2c85c7..02ec37d 100644
+--- "a/C:\\Users\\Mark\\AppData\\Local\\Temp\\TortoiseGit\\ProF756.tmp\\Program-1460492-left.cs"
++++ "b/C:\\Users\\Mark\\AppData\\Local\\Temp\\TortoiseGit\\ProF755.tmp\\Program-2191c02-right.cs"
+@@ -10,14 +10,23 @@ class Program
+     {
+         static void Main(string[] args)
+         {
+-            ReverseTheWordsOption1();
+-            ReverseTheWordsOption2();
++            string originalWords;
++
++            if (args.Any()) {
++                originalWords = String.Join(" ", args);
++            }
++            else {
++                originalWords = "The dog walks down the street";
++
++            }
++
++            ReverseTheWordsOption1(originalWords);
++            ReverseTheWordsOption2(originalWords);
+         }
+ 
+-        private static void ReverseTheWordsOption1()
++        private static void ReverseTheWordsOption1(string originalWords)
+         {
+             char[] delimiterChars = { ' ', '\t' };
+-            const string originalWords = "The dog walks down the street";
+ 
+             var words = originalWords.Split(delimiterChars);
+             var reversedWords = new StringBuilder();
+@@ -39,10 +48,9 @@ private static void ReverseTheWordsOption1()
+         }
+ 
+ 
+-        private static void ReverseTheWordsOption2()
++        private static void ReverseTheWordsOption2(string originalWords)
+         {
+             char[] delimiterChars = { ' ', '\t' };
+-            const string originalWords = "The dog walks down the street";
+ 
+             var reversedWords = String.Join(" ", originalWords.Split(delimiterChars).Reverse());
+ 

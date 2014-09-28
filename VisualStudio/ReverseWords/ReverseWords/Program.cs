@@ -22,6 +22,7 @@ namespace ReverseWords
 
             ReverseTheWordsOption1(originalWords);
             ReverseTheWordsOption2(originalWords);
+            ReverseTheWordsOption3(originalWords);
         }
 
         private static void ReverseTheWordsOption1(string originalWords)
@@ -58,6 +59,26 @@ namespace ReverseWords
 
             System.Console.WriteLine("Original text: '{0}'", originalWords);
             System.Console.WriteLine("Reversed text: '{0}'\n\n", reversedWords);
+        }
+
+        private static void ReverseTheWordsOption3(string originalWords)
+        {
+            char[] delimiterChars = { ' ', '\t' };
+
+            var strings = originalWords.Split(delimiterChars);
+            var reversedWords = new StringBuilder();
+
+            foreach (var s in strings) {
+                for (var i = s.Length - 1; i >= 0; i--) {
+                    reversedWords.Append(s[i]);
+                }
+                reversedWords.Append(" ");
+            }
+
+            Console.WriteLine("Method 3:\n\n");
+
+            System.Console.WriteLine("Original text: '{0}'", originalWords);
+            System.Console.WriteLine("Reversed text: '{0}'\n\n", reversedWords.ToString().Trim());
         }
     }
 }
